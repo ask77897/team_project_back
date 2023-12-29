@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?><testrun name="FreetimeApplicationTests" project="freetime" tests="2" started="2" failures="0" errors="0" ignored="0">
+  <testsuite name="com.example.FreetimeApplicationTests" time="0.621" displayname="FreetimeApplicationTests" uniqueid="[engine:junit-jupiter]/[class:com.example.FreetimeApplicationTests]">
+    <testcase name="list" classname="com.example.FreetimeApplicationTests" time="0.613" displayname="list()" uniqueid="[engine:junit-jupiter]/[class:com.example.FreetimeApplicationTests]/[method:list()]"/>
+    <testcase name="contextLoads" classname="com.example.FreetimeApplicationTests" time="0.007" displayname="contextLoads()" uniqueid="[engine:junit-jupiter]/[class:com.example.FreetimeApplicationTests]/[method:contextLoads()]"/>
+  </testsuite>
+</testrun>

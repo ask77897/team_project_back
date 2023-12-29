@@ -1,0 +1,7 @@
+spring.datasource.hikari.driver-class-name=com.mysql.cj.jdbc.Driver
+spring.datasource.hikari.jdbc-url=jdbc:mysql://freetimedb.ctsegm8s4ccl.ap-northeast-2.rds.amazonaws.com:3306/freetimedb?serverTimezone=Asia/Seoul&characterEncoding=UTF-8
+spring.datasource.hikari.username=admin
+spring.datasource.hikari.password=freetimedb
+
+spring.servlet.multipart.maxFileSize=1000100010
+spring.servlet.multipart.maxRequestSize=1000100010
