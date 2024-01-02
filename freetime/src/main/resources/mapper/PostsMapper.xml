@@ -1,26 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.mapper.PostsMapper">
-	<update id="update_postscontent">
-		update posts
-		set content=#{content}
-		where uid=#{uid}
+	<insert id="insert_posts">
+	  insert into posts (pid,writer,title,contents,regdate)
+	  values (#{pid},#{writer},#{title},#{contents},#{regdate})
+	</insert>
+
+	<update id="update_posts">
+	  update posts set
+	  pid = #{pid},
+	  writer = #{writer},
+	  title = #{title},
+	  contents = #{contents},
+	  regdate = #{regdate},
+	  where pid = #{pid}
 	</update>
-	<delete id="delete_postscontent">
-		delete from postscontent
-		where uid=#{uid}
+
+	<delete id="delete_posts">
+	  delete from posts where pid = #{pid}
 	</delete>
-	<select id="list" resultType="hashmap">
-		select *,date_format(regdate, '%Y-%m-%d %T') regdate, pid
-		from posts
-		where title like  concat('%',#{query},'%') or maker like concat('%',#{query},'%')
-		order by pid desc
-		limit #{start}, #{size};
-	</select>
-		<select id="info" resultType="hashmap">
-		select *,date_format(regdate, '%Y-%m-%d %T') regdate, writer, title
-		(select count(*) from posts where pid=#{pid} and title=#{title}) pid
-		from posts
-		where pid=#{pid}
-	</select>
 </mapper>
