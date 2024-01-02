@@ -8,13 +8,13 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.example.dao.CouDAO;
+import com.example.dao.PostsDAO;
 
 @RestController
-@RequestMapping("/mentor")
-public class MentorController {
+@RequestMapping("/posts")
+public class PostsController {
 	@Autowired
-	MentorDAO dao;
+	PostsDAO dao;
 	
 	@GetMapping("/list.json")
 	public List<HashMap<String, Object>> list() {
