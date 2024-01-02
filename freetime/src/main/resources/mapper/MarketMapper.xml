@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.mapper.MarketMapper">
+    <select id="list" resultType="hashmap">
+        select * from market
+    </select>
+    <select id="read" resultType="hashmap">
+    	select * from market order by desc where sid=#{sid}
+    </select>
+    <insert id="insert">
+    	insert into market(uid, title, photo, contents, price, category)
+    	values(#{uid}, #{title}, #{photo}, #{contents}, #{price}, #{category})
+    </insert>
+    <update id="update">
+    	update market set title=#{title}, photo=#{photo}, contents=#{contents},
+    	price=#{price}, category=#{category} where sid=#{sid}
+    </update>
+    <delete id="delete">
+    	delete from market where sid=#{sid}
+    </delete>
+</mapper>
