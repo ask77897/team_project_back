@@ -7,6 +7,8 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.example.domain.UserVO;
+
 @Repository
 public class UserDAOImpl implements UserDAO{
 	@Autowired
@@ -17,6 +19,30 @@ public class UserDAOImpl implements UserDAO{
 	public List<HashMap<String, Object>> list() {
 		// TODO Auto-generated method stub
 		return session.selectList(namespace + ".list");
+	}
+
+	@Override
+	public HashMap<String, Object> read() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void join(UserVO vo) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void update(UserVO vo) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void passUpdate(String upass) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }
