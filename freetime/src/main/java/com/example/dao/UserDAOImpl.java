@@ -22,27 +22,27 @@ public class UserDAOImpl implements UserDAO{
 	}
 
 	@Override
-	public HashMap<String, Object> read() {
+	public HashMap<String, Object> read(String uid) {
 		// TODO Auto-generated method stub
-		return null;
+		return session.selectOne(namespace + ".read" + uid);
 	}
 
 	@Override
 	public void join(UserVO vo) {
 		// TODO Auto-generated method stub
-		
+		session.insert(namespace + ".join" + vo);
 	}
 
 	@Override
 	public void update(UserVO vo) {
 		// TODO Auto-generated method stub
-		
+		session.update(namespace + ".update" + vo);
 	}
 
 	@Override
 	public void passUpdate(String upass) {
 		// TODO Auto-generated method stub
-		
+		session.update(namespace + ".passUpdate" + upass);
 	}
 
 }

@@ -1,0 +1,12 @@
+package com.example.dao;
+
+import java.util.HashMap;
+
+import com.example.domain.MentorVO;
+
+public interface MentorDAO {
+	public HashMap<String, Object> read();
+	public void insert(MentorVO vo);
+	public void update(MentorVO vo);
+
+}
