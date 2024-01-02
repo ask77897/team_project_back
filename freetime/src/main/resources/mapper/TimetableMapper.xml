@@ -1,7 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.example.mapper.UserMapper">
-    <select id="list" resultType="hashmap">
-        select * from users
-    </select>
+<mapper namespace="com.example.mapper.TimetableMapper">
+	<select id="choice_timetable">
+		select *,
+		from timetable
+		where uid=#{uid}
+	</select>
+	<update id="update_timetable">
+		update timetable
+		set content=#{contents}
+		where uid=#{uid}
+	</update>
+	
+	<delete id="delete_timetable">
+		delete from timetable where uid=#{uid}
+	</delete>
+	
+	<insert id="insert_timetable">
+		insert into timetable(uid, contents)
+		value(#{uid},#{contents});
+	</insert>
 </mapper>
