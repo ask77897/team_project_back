@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.mapper.GradeCalcMapper">
+    <select id="list_gradecalc" resultType="hashmap">
+      select * from gradecalc
+    </select>
+	
 	<insert id="insert_gradecalc">
 	  insert into gradecalc (uid, courses, grade, score, base)
 	  values (#{uid}, #{courses},#{grade},#{score},#{base})
@@ -8,12 +12,12 @@
 	
 	<update id="update_gradecalc">
 	  update gradecalc set
-	    uid = #{uid},
-	    courses = #{courses},
-	    grade = #{grade},
-	    score = #{score},
-	    base = #{base},
-	  	where uid = #{uid}
+	  uid = #{uid},
+	  courses = #{courses},
+	  grade = #{grade},
+	  score = #{score},
+	  base = #{base},
+	  where uid = #{uid}
 	</update>
 	
 	<delete id="delete_gradecalc">

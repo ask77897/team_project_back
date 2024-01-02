@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.mapper.PostsMapper">
+    <select id="list_posts" resultType="hashmap">
+        select * from posts
+    </select>
+    
 	<insert id="insert_posts">
 	  insert into posts (pid,writer,title,contents,regdate)
 	  values (#{pid},#{writer},#{title},#{contents},#{regdate})
