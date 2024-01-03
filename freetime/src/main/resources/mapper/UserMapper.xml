@@ -4,4 +4,18 @@
     <select id="list" resultType="hashmap">
         select * from users
     </select>
+    <select id="read" resultType="hashmap">
+    	select * from users where uid=#{uid} 
+    </select>
+    <insert id="join">
+    	insert into users(uid, upass, uname, school) values(#{uid}, #{upass}, #{uname}, #{school})
+    </insert>
+    <update id="update">
+    	update users set uname=#{umane}, school=#{school}, phone=#{phone},
+    	address1=#{address1}, address2=#{address2}, image=#{image}, birthday=#{birthday}
+    	where uid=#{uid}
+    </update>
+    <update id="passUpdate">
+    	update users set upass=#{upass} where uid=#{uid}
+    </update>
 </mapper>
