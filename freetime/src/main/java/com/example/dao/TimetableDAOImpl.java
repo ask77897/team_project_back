@@ -7,10 +7,10 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import com.example.dao.TimetableVO;
+import com.example.domain.TimetableVO;
 
 @Repository
-public class TimetableDAOImpl implements PostsDAO{
+public class TimetableDAOImpl implements TimetableDAO{
 	@Autowired
 	SqlSession session;
 	String namespace="com.example.mapper.TimetableMapper";
@@ -33,6 +33,12 @@ public class TimetableDAOImpl implements PostsDAO{
 	@Override
 	public void update(TimetableVO vo) {
 		session.update(namespace + ".update", vo);
+	}
+
+	@Override
+	public HashMap<String, Object> read(String uid) {
+		// TODO Auto-generated method stub
+		return session.selectOne(namespace + ".read" + uid);
 	}
 
 }

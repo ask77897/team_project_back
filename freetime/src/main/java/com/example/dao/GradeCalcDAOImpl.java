@@ -7,7 +7,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import com.example.dao.GradeCalcDAOImplVO;
+import com.example.domain.GradecalcVO;
 
 @Repository
 public class GradeCalcDAOImpl implements GradeCalcDAO{
@@ -21,17 +21,23 @@ public class GradeCalcDAOImpl implements GradeCalcDAO{
 	}
 	
 	@Override
-	public void insert(GradeCalcVO vo) {
+	public void insert(GradecalcVO vo) {
 		session.insert(namespace + ".insert", vo);
 	}
 
 	@Override
-	public void delete(int pid) {
-		session.delete(namespace + ".delete", pid);
+	public void delete(String uid) {
+		session.delete(namespace + ".delete", uid);
 	}
 
 	@Override
-	public void update(GradeCalcVO vo) {
+	public void update(GradecalcVO vo) {
 		session.update(namespace + ".update", vo);
+	}
+
+	@Override
+	public HashMap<String, Object> read(String uid) {
+		// TODO Auto-generated method stub
+		return session.selectOne(namespace + ".read" + uid);
 	}
 }

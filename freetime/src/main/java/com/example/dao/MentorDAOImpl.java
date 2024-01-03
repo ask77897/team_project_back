@@ -1,6 +1,7 @@
 package com.example.dao;
 
 import java.util.HashMap;
+import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,6 +33,11 @@ public class MentorDAOImpl implements MentorDAO{
 	public void delete(String mtid) {
 		// TODO Auto-generated method stub
 		session.delete(namespace + ".delete" + mtid);
+	}
+	@Override
+	public List<HashMap<String, Object>> list() {
+		// TODO Auto-generated method stub
+		return session.selectOne(namespace + ".list");
 	}
 	
 	

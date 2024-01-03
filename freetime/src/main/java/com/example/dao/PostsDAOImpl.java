@@ -7,7 +7,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import com.example.dao.PostsVO;
+import com.example.domain.PostsVO;
 
 @Repository
 public class PostsDAOImpl implements PostsDAO{
@@ -33,6 +33,12 @@ public class PostsDAOImpl implements PostsDAO{
 	@Override
 	public void update(PostsVO vo) {
 		session.update(namespace + ".update", vo);
+	}
+
+	@Override
+	public HashMap<String, Object> read(int pid) {
+		// TODO Auto-generated method stub
+		return session.selectOne(namespace + ".read" + pid);
 	}
 
 }

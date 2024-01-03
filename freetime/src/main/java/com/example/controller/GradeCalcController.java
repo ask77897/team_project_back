@@ -14,7 +14,7 @@ import com.example.dao.GradeCalcDAO;
 @RequestMapping("/GradeCalc")
 public class GradeCalcController {
 	@Autowired
-	GradeCalc dao;
+	GradeCalcDAO dao;
 	
 	@GetMapping("/list.json")
 	public List<HashMap<String, Object>> list() {

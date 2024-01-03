@@ -8,13 +8,13 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.example.dao.MarketControllerDAO;
+import com.example.dao.MarketDAO;
 
 @RestController
 @RequestMapping("/market")
 public class MarketController {
 	@Autowired
-	MarketController dao;
+	MarketDAO dao;
 	
 	@GetMapping("/list.json")
 	public List<HashMap<String, Object>> list() {

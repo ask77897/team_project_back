@@ -1,6 +1,6 @@
 package com.example.domain;
 
-public class TimeTableVO {
+public class TimetableVO {
 	private String uid;
 	private String contents;
 	public String getUid() {
