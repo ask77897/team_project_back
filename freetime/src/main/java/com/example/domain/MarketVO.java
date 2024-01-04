@@ -3,7 +3,7 @@ package com.example.domain;
 import java.util.Date;
 
 public class MarketVO {
-	private String sid;
+	private int sid;
 	private String uid;
 	private String title;
 	private String photo;
@@ -11,10 +11,17 @@ public class MarketVO {
 	private int price;
 	private int category;
 	private Date regdate;
-	public String getSid() {
+	private String photonum;
+	public String getPhotonum() {
+		return photonum;
+	}
+	public void setPhotonum(String photonum) {
+		this.photonum = photonum;
+	}
+	public int getSid() {
 		return sid;
 	}
-	public void setSid(String sid) {
+	public void setSid(int sid) {
 		this.sid = sid;
 	}
 	public String getUid() {
@@ -62,7 +69,8 @@ public class MarketVO {
 	@Override
 	public String toString() {
 		return "MarketVO [sid=" + sid + ", uid=" + uid + ", title=" + title + ", photo=" + photo + ", contents="
-				+ contents + ", price=" + price + ", category=" + category + ", regdate=" + regdate + "]";
+				+ contents + ", price=" + price + ", category=" + category + ", regdate=" + regdate + ", photonum="
+				+ photonum + "]";
 	}
 	
 	
