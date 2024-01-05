@@ -20,32 +20,33 @@ public class MarketDAOImpl implements MarketDAO{
 	@Override
 	public List<HashMap<String, Object>> list(QueryVO vo) {
 		vo.setStart((vo.getPage()-1)*vo.getSize());
-		return session.selectList(namespace + ".list" + vo);
+		System.out.println(vo.toString());
+		return session.selectList(namespace + ".list", vo);
 	}
 
 	@Override
 	public HashMap<String, Object> read(int sid) {
-		return session.selectOne(namespace + ".read" + sid);
+		return session.selectOne(namespace + ".read", sid);
 	}
 
 	@Override
 	public void insert(MarketVO vo) {
-		session.insert(namespace + ".insert" + vo);
+		session.insert(namespace + ".insert", vo);
 	}
 
 	@Override
 	public void update(MarketVO vo) {
-		session.update(namespace + ".update" + vo);
+		session.update(namespace + ".update", vo);
 	}
 
 	@Override
 	public void delete(int sid) {
-		session.delete(namespace + ".delete" + sid);
+		session.delete(namespace + ".delete", sid);
 	}
 
 	@Override
 	public int total(QueryVO vo) {
-		return session.selectOne(namespace + ".total" + vo);
+		return session.selectOne(namespace + ".total", vo);
 	}
 
 	@Override
@@ -54,27 +55,27 @@ public class MarketDAOImpl implements MarketDAO{
 		map.put("sid", map);
 		map.put("start", (page-1)*size);
 		map.put("size", size);
-		return session.selectList(namespace + ".comment" + map);
+		return session.selectList(namespace + ".comment", map);
 	}
 
 	@Override
 	public int commTotal(int mcid) {
-		return session.selectOne(namespace + ".commTotal" + mcid);
+		return session.selectOne(namespace + ".commTotal", mcid);
 	}
 
 	@Override
 	public void commIn(MCommentsVO vo) {
-		session.insert(namespace + ".commIn" + vo);
+		session.insert(namespace + ".commIn", vo);
 	}
 
 	@Override
 	public void commUp(MCommentsVO vo) {
-		session.update(namespace + ".commUp" + vo);
+		session.update(namespace + ".commUp", vo);
 	}
 
 	@Override
 	public void viewcnt(int sid) {
-		session.update(namespace + ".viewcnt" + sid);
+		session.update(namespace + ".viewcnt", sid);
 	}
 
 	@Override
@@ -82,17 +83,17 @@ public class MarketDAOImpl implements MarketDAO{
 		HashMap<String, Object> map = new HashMap<>();
 		map.put("sid", sid);
 		map.put("amount", amount);
-		session.update(namespace + ".commcnt" + map);
+		session.update(namespace + ".commcnt", map);
 	}
 
 	@Override
 	public void commDel(int mcid) {
-		session.delete(namespace + ".commDel" + mcid);
+		session.delete(namespace + ".commDel", mcid);
 	}
 
 	@Override
 	public MCommentsVO commRead(int mcid) {
-		return session.selectOne(namespace + ".read" + mcid);
+		return session.selectOne(namespace + ".read", mcid);
 	}
 
 	@Override
@@ -100,16 +101,16 @@ public class MarketDAOImpl implements MarketDAO{
 		HashMap<String, Object> map = new HashMap<>();
 		map.put("sid", sid);
 		map.put("uid", uid);
-		return session.selectOne(namespace + ".info" + map);
+		return session.selectOne(namespace + ".info", map);
 	}
 
 	@Override
 	public void photoUp(MarketVO vo) {
-		session.update(namespace + ".photoUp" + vo);
+		session.update(namespace + ".photoUp", vo);
 	}
 
 	@Override
 	public int check(String photonum) {
-		return session.selectOne(namespace + ".check" + photonum);
+		return session.selectOne(namespace + ".check", photonum);
 	}
 }

@@ -1,10 +1,19 @@
 package com.example.domain;
 
+import java.util.Date;
+
 public class MentorVO {
 	private String mtid;
 	private String uid;
 	private String mid;
+	private Date regdate;
 	
+	public Date getRegdate() {
+		return regdate;
+	}
+	public void setRegdate(Date regdate) {
+		this.regdate = regdate;
+	}
 	public String getMtid() {
 		return mtid;
 	}
@@ -25,7 +34,7 @@ public class MentorVO {
 	}
 	@Override
 	public String toString() {
-		return "MentorVO [mtid=" + mtid + ", uid=" + uid + ", mid=" + mid + "]";
+		return "MentorVO [mtid=" + mtid + ", uid=" + uid + ", mid=" + mid + ", regdate=" + regdate + "]";
 	}
 	
 }

@@ -38,6 +38,6 @@ public class GradeCalcDAOImpl implements GradeCalcDAO{
 	@Override
 	public HashMap<String, Object> read(String uid) {
 		// TODO Auto-generated method stub
-		return session.selectOne(namespace + ".read" + uid);
+		return session.selectOne(namespace + ".read", uid);
 	}
 }

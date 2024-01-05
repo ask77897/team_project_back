@@ -5,8 +5,9 @@
         select * from mentorpost
     </select>
     <select id="read" resultType="hashmap">
-    	select * from mentorpost order by desc where mpid=#{mpid}
+    	select * from mentorpost where mpid=#{mpid} order by desc
     </select>
+    <select id=""></select>
     <insert id="insert">
     	insert into mentorpost (mtid, writer, title, contents)
     	values(#{mtid}, #{writer}, #{title}, #{contents})

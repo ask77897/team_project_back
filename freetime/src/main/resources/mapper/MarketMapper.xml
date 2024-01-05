@@ -3,7 +3,7 @@
 <mapper namespace="com.example.mapper.MarketMapper">
     <select id="list" resultType="hashmap">
         select *, date_format(regdate, '%Y-%m-%d %T') fmtdate, format(price, 0) fmtprice 
-        from market where title like concat("%", #{query}, "%")
+        from market where title like concat('%', #{query}, '%')
         order by sid desc limit #{start}, #{size} 
     </select>
     <select id="read" resultType="hashmap">
@@ -11,7 +11,7 @@
     	from market where sid=#{sid} 
     </select>
     <select id="total" resultType="int">
-    	select count(*) from market where title like concat("%", #{query}, "%")
+    	select count(*) from market where title like concat('%', #{query}, '%')
     </select>
     <select id="comment" resultType="hashmap">
     	select *, date_format(regdate, '%Y-%m-%d %T') from mcomments where sid=#{sid} order by mcid desc limit #{start}, #{size}

@@ -28,8 +28,9 @@ public class MarketController {
 	@Autowired
 	MarketService service;
 	
-	@GetMapping("/list.json")
+	@GetMapping("/list.json") 
 	public HashMap<String, Object> list(QueryVO vo) {
+		System.out.println(vo.toString());
 		return service.list(vo);
 	}
 	

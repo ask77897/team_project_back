@@ -27,16 +27,16 @@ public class MentorPostDAOImpl implements MentorPostDAO{
 	@Override
 	public void insert(MentorPostVO vo) {
 		// TODO Auto-generated method stub
-		session.insert(namespace + ".insert" + vo);
+		session.insert(namespace + ".insert", vo);
 	}
 	@Override
 	public void update(MentorPostVO vo) {
 		// TODO Auto-generated method stub
-		session.update(namespace + ".update" + vo);
+		session.update(namespace + ".update", vo);
 	}
 	@Override
 	public void delete(int mpid) {
 		// TODO Auto-generated method stub
-		session.delete(namespace + ".delete" + mpid);
+		session.delete(namespace + ".delete", mpid);
 	}
 }

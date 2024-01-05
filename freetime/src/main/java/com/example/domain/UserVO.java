@@ -12,6 +12,13 @@ public class UserVO {
 	private String address2;
 	private String image;
 	private Date birthday;
+	private Date regdate;
+	public Date getRegdate() {
+		return regdate;
+	}
+	public void setRegdate(Date regdate) {
+		this.regdate = regdate;
+	}
 	public String getUid() {
 		return uid;
 	}
@@ -70,7 +77,7 @@ public class UserVO {
 	public String toString() {
 		return "UserVO [uid=" + uid + ", upass=" + upass + ", uname=" + uname + ", school=" + school + ", phone="
 				+ phone + ", address1=" + address1 + ", address2=" + address2 + ", image=" + image + ", birthday="
-				+ birthday + "]";
+				+ birthday + ", regdate=" + regdate + "]";
 	}
 	
 	

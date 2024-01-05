@@ -22,21 +22,21 @@ public class CommentsDAOImpl implements CommentsDAO{
 	@Override
 	public HashMap<String, Object> read(int cid) {
 		// TODO Auto-generated method stub
-		return session.selectOne(namespace + ".read" + cid);
+		return session.selectOne(namespace + ".read", cid);
 	}
 	@Override
 	public void insert(CommentsVO vo) {
 		// TODO Auto-generated method stub
-		session.insert(namespace + ".insert" + vo);
+		session.insert(namespace + ".insert", vo);
 	}
 	@Override
 	public void update(CommentsVO vo) {
 		// TODO Auto-generated method stub
-		session.update(namespace + ".update" + vo);
+		session.update(namespace + ".update", vo);
 	}
 	@Override
 	public void delete(int cid) {
 		// TODO Auto-generated method stub
-		session.delete(namespace + ".delete" + cid);
+		session.delete(namespace + ".delete", cid);
 	}
 }

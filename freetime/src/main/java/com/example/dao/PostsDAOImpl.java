@@ -38,7 +38,7 @@ public class PostsDAOImpl implements PostsDAO{
 	@Override
 	public HashMap<String, Object> read(int pid) {
 		// TODO Auto-generated method stub
-		return session.selectOne(namespace + ".read" + pid);
+		return session.selectOne(namespace + ".read", pid);
 	}
 
 }
