@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
@@ -35,7 +36,7 @@ public class MarketController {
 	}
 	
 	@GetMapping("/delete")
-	public void delete(int sid) {
+	public void delete(@RequestParam("sid") int sid) {
 		dao.delete(sid);
 	}
 	

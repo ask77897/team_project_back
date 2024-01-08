@@ -8,7 +8,8 @@ import com.example.dao.MarketDAO;
 import com.example.dao.MentorDAO;
 import com.example.dao.MysqlDAO;
 import com.example.dao.UserDAO;
-import com.example.domain.QueryVO;
+import com.example.domain.MarketVO;
+import com.example.service.MarketService;
 
 @SpringBootTest
 class FreetimeApplicationTests {
@@ -23,6 +24,9 @@ class FreetimeApplicationTests {
 	
 	@Autowired
 	MarketDAO dao;
+	
+	@Autowired
+	MarketService sevice;
 
 	@Test
 	void contextLoads() {
@@ -41,28 +45,28 @@ class FreetimeApplicationTests {
 		vo.setUid("test1");
 		vo.setMtid(UUID.randomUUID().toString().substring(0, 10));
 		mendao.insert(vo);
-	}*/
-	/*
+	}
+	
 	@Test
 	void list() {
 		QueryVO vo = new QueryVO();
 		vo.setPage(1);
 		vo.setSize(3);
 		mendao.list(vo);
-	}
+	}*/
 	
 	@Test
 	public void insert() {
 		MarketVO vo = new MarketVO();
-		vo.setUid("test1");
+		vo.setUid("test9");
 		vo.setTitle("testTitle");
-		vo.setPhoto(null);
+		vo.setPhoto("");
 		vo.setContents("testContents");
 		vo.setPrice(0);
-		vo.setPhotonum(UUID.randomUUID().toString().substring(0, 10));
-		dao.insert(vo);
-	}*/
-	
+		vo.setPhotonum("");
+		sevice.photoIn(vo);
+	}
+	/*
 	@Test
 	public void list() {
 		QueryVO vo=new QueryVO();
@@ -72,4 +76,8 @@ class FreetimeApplicationTests {
 		dao.list(vo);
 	}
 
+	@Test
+	public void delete() {
+		dao.delete(3);
+	}*/
 }

@@ -17,7 +17,7 @@
     	select *, date_format(regdate, '%Y-%m-%d %T') from mcomments where sid=#{sid} order by mcid desc limit #{start}, #{size}
     </select>
     <select id="commTotal" resultType="int">
-    	select count(*) from mcomments where mcid=#{mcid}
+    	select count(*) from mcomments where sid=#{sid}
     </select>
     <select id="commRead" resultType="com.example.domain.MCommentsVO">
     	select * from mcomments where mcid=#{mcid}
