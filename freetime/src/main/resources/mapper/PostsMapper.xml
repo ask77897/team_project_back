@@ -28,7 +28,7 @@
 		where pcid=#{pcid} 
 	</select>
 	
-	<select id="commRead" resultType="com.example.domain.pcommentsVO"> 
+	<select id="commRead" resultType="com.example.domain.PCommentsVO"> 
 		select * from pcomments 
 		where pcid=#{pcid} 
 	</select>
@@ -70,4 +70,4 @@
 		delete from pcomments 
 		where pcid=#{pcid} 
 	</delete>
-</mapper>
+</mapper>	
