@@ -31,7 +31,7 @@ public class PostsServiceImpl implements PostsService{
 	@Override
 	public void delComm(int pcid) {
 		PCommentsVO vo = dao.commRead(pcid);
-		dao.delete(pcid);
+		dao.commDel(pcid);
 		dao.commcnt(vo.getPcid(), -1);
 	}
 
@@ -53,6 +53,12 @@ public class PostsServiceImpl implements PostsService{
 
 	@Override
 	public void photoIn(PostsVO vo) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void delete(int pid) {
 		// TODO Auto-generated method stub
 		
 	}
