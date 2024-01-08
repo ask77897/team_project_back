@@ -60,7 +60,8 @@
 	</update>
 	
 	<delete id="delete"> 
-		delete from posts where pid=#{pid} 
+		delete from posts 
+		where pid=#{pid} 
 	</delete>
 	
 	<delete id="commDel"> 

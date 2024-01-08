@@ -32,8 +32,8 @@ public class PostsController {
 		return service.list(vo);
 	}
 
-	@PostMapping("/delete/{pid}")
-	public void delete(@PathVariable int pid) {
+	@GetMapping("/delete")
+	public void delete(int pid) {
 		dao.delete(pid);
 	}
 

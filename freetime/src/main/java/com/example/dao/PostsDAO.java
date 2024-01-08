@@ -18,10 +18,9 @@ public interface PostsDAO {
 	public void insert(PostsVO vo);
 	public void commIn(PCommentsVO vo);
 	public void update(PostsVO vo);
-	public void delete(int pid);
 	public void commUp(PCommentsVO vo);
 	public void viewcnt(int pid);
 	public void commcnt(int pid, int amount);
+	public void delete(int pid);
 	public void commDel(int pcid);
-	
 }
