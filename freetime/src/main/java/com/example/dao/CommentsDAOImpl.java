@@ -47,6 +47,6 @@ public class CommentsDAOImpl implements CommentsDAO{
 		HashMap<String, Object> map = new HashMap<>();
 		map.put("mpid", mpid);
 		map.put("amount", amount);
-		session.update(namespace + ".commcnt", map);
+		session.update(namespace + ".ccnt", map);
 	}
 }

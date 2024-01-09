@@ -9,12 +9,14 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.dao.CommentsDAO;
 import com.example.dao.MentorDAO;
 import com.example.dao.MentorPostDAO;
 import com.example.domain.CommentsVO;
+import com.example.domain.MentorPostVO;
 import com.example.domain.MentorVO;
 import com.example.domain.QueryVO;
 import com.example.service.CommentsService;
@@ -29,7 +31,7 @@ public class MentorController {
 	CommentsDAO cdao;
 	
 	@Autowired
-	MentorPostDAO mdoa;
+	MentorPostDAO mdao;
 	
 	@Autowired
 	CommentsService service;
@@ -44,8 +46,8 @@ public class MentorController {
 		return dao.read(mtid);
 	}
 	
-	@PostMapping("/delete")
-	public void delete(String mtid) {
+	@GetMapping("/delete")
+	public void delete(@RequestParam("mtid") String mtid) {
 		dao.delete(mtid);
 	}
 	
@@ -56,7 +58,7 @@ public class MentorController {
 	
 	@PostMapping("/insert")
 	public void insert(@RequestBody MentorVO vo) {
-		String mtid = UUID.randomUUID().toString().substring(0, 10);
+		String mtid = UUID.randomUUID().toString().substring(0, 8);
 		vo.setMtid(mtid);
 		dao.insert(vo);
 	}
@@ -76,8 +78,8 @@ public class MentorController {
 		service.inComm(vo);
 	}
 	
-	@PostMapping("/commnets/delete")
-	public void delete(int cid) {
+	@GetMapping("/comments/delete")
+	public void delete(@RequestParam("cid") int cid) {
 		service.delComm(cid);
 	}
 	
@@ -88,6 +90,28 @@ public class MentorController {
 	
 	//---------------------------//
 	
+	@GetMapping("/post/list.json")
+	public HashMap<String, Object> mpList(QueryVO vo){
+		HashMap<String, Object> map = new HashMap<>();
+		map.put("list", mdao.list(vo));
+		map.put("total", mdao.total(vo));
+		return map;
+	}
 	
+	@PostMapping("/post/insert")
+	public void mpInsert(@RequestBody MentorPostVO vo) {
+		System.out.println("controller" + vo.toString());
+		mdao.insert(vo);
+	}
+	
+	@PostMapping("/post/update")
+	public void mpUpdate(@RequestBody MentorPostVO vo) {
+		mdao.update(vo);
+	}
+	
+	@GetMapping("/post/delete")
+	public void mpDelete(@RequestParam("mpid") int mpid) {
+		mdao.delete(mpid);
+	}
 	
 }

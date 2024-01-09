@@ -19,7 +19,7 @@
     	where mpid=#{mpid}
     </update>
     <update id="update">
-    	update comments set comments=#{comments} where cid=#{cid}
+    	update comments set comments=#{comments}, regdate=now() where cid=#{cid}
     </update>
     <delete id="delete">
     	delete from comments where cid=#{cid}

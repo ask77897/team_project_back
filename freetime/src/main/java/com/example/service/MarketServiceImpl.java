@@ -46,9 +46,9 @@ public class MarketServiceImpl implements MarketService{
 
 	@Transactional
 	@Override
-	public HashMap<String, Object> read(int sid, String uid) {
+	public HashMap<String, Object> read(int sid) {
 		dao.viewcnt(sid);
-		return dao.read(sid, uid);
+		return dao.read(sid);
 	}
 
 	@Transactional

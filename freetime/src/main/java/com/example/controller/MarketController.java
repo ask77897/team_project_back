@@ -45,11 +45,6 @@ public class MarketController {
 		return dao.read(sid);
 	}
 	
-	@GetMapping("/info/{sid}")
-	public HashMap<String, Object> info(@PathVariable int sid, String uid){
-		return service.read(sid, uid);
-	}
-	
 	@GetMapping("/comment/list.json")
 	public HashMap<String, Object> comment(int sid, int page, int size){
 		HashMap<String, Object> map = new HashMap<>();

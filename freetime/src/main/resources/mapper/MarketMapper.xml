@@ -7,7 +7,8 @@
         order by sid desc limit #{start}, #{size} 
     </select>
     <select id="read" resultType="hashmap">
-    	select *, date_format(regdate, '%Y-%m-%d %T') fmtdate, format(price, 0) fmtprice
+    	select *, date_format(regdate, '%Y-%m-%d %T') fmtdate, format(price, 0) fmtprice,
+    	(select count(*) from mcomments where sid=#{sid})
     	from market where sid=#{sid} 
     </select>
     <select id="total" resultType="int">
@@ -21,11 +22,6 @@
     </select>
     <select id="commRead" resultType="com.example.domain.MCommentsVO">
     	select * from mcomments where mcid=#{mcid}
-    </select>
-    <select id="info" resultType="hashmap">
-    	select *, date_format(regdate, '%Y-%m-%d %T') fmtdate, format(price, 0) fmtprice,
-    	(select count(*) from mcomments where uid=#{uid} and sid=#{sid})
-    	form market where sid=#{sid}
     </select>
     <select id="check" resultType="int">
     	select count(*) from market where photonum=#{photonum}
