@@ -30,9 +30,10 @@
 		from users
 		where uid = #{uid}
 	</select>
-	<select id="login" resultType="com.example.domain.UserVO">
+	<select id="login" >
 		select *
 		from users
 		where uid=#{uid}
 	</select>
+	
 </mapper>

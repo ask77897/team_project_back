@@ -4,7 +4,6 @@ import java.io.File;
 import java.util.HashMap;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -18,7 +17,7 @@ import com.example.domain.UserVO;
 
 @RestController
 @RequestMapping("/users")
-public class UserRestControler {
+public class Controller {
 
 	@Autowired
 	UserDAO dao;
