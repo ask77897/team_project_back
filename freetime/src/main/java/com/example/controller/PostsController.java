@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.dao.PostsDAO;
@@ -36,6 +37,11 @@ public class PostsController {
 	public void delete(@PathVariable("pid") int pid) {
 		dao.delete(pid);
 	}
+	
+	@PostMapping("/insert")
+	public void insert(@RequestBody PostsVO vo) {
+		dao.insert(vo);
+	}
 
 	@GetMapping("/read/{pid}")
 	public HashMap<String, Object> read(@PathVariable int pid){
@@ -48,7 +54,7 @@ public class PostsController {
 	}
 
 	@GetMapping("/comment/list.json")
-	public HashMap<String, Object> comment(int pid, int page, int size){
+	public HashMap<String, Object> comment(@RequestParam("pid") int pid, @RequestParam("page") int page, @RequestParam("size") int size){
 		HashMap<String, Object> map = new HashMap<>();
 		map.put("list", dao.comment(pid, page, size));
 		map.put("total", dao.commTotal(pid));
@@ -59,19 +65,30 @@ public class PostsController {
 	public void update(@RequestBody PostsVO vo) {
 		dao.update(vo);
 	}
+	
 
 	@PostMapping("/comment/insert")
 	public void incomm(@RequestBody PCommentsVO vo) {
 		service.inComm(vo);
 	}
 
-	@PostMapping("/comment/delete/{pcid}")
-	public void delcomm(@PathVariable int pcid) {
+	@GetMapping("/comment/delete")
+	public void delcomm(@RequestParam("pcid") int pcid) {
 		service.delComm(pcid);
 	}
 
 	@PostMapping("/comment/update")
 	public void upcomm(@RequestBody PCommentsVO vo) {
 		dao.commUp(vo);
+	}
+	
+	@GetMapping("/insert/favorites")
+	public void insert(int pid, String uid) {
+		service.insertFavorites(pid, uid);
+	}
+	
+	@GetMapping("/delete/favorites")
+	public void delete(int pid, String uid) {
+		service.deleteFavorites(pid, uid);
 	}
 }

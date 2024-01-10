@@ -12,7 +12,7 @@ public interface PostsDAO {
 	public HashMap<String, Object> read(int pid);
 	public HashMap<String, Object> read(int pid, String writer);
 	public int total(QueryVO vo);
-	public List<HashMap<String, Object>> comment(int pid, int page, int size);
+	public HashMap<String, Object> comment(int pid, int page, int size);
 	public int commTotal(int pcid);
 	public PCommentsVO commRead(int pcid);
 	public void insert(PostsVO vo);
@@ -23,4 +23,7 @@ public interface PostsDAO {
 	public void commcnt(int pid, int amount);
 	public void delete(int pid);
 	public void commDel(int pcid);
+	public void insertFavorites(int pid, String uid);
+	public void deleteFavorites(int pid, String uid);
+	public void updateFavorites(int pid, int amount);
 }

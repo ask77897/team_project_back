@@ -20,7 +20,7 @@ public class PostsDAOImpl implements PostsDAO{
 	@Override
 	public List<HashMap<String, Object>> list(QueryVO vo) {
 		vo.setStart((vo.getPage()-1)*vo.getSize());
-		System.out.println(vo.toString());
+		//System.out.println(vo.toString());
 		return session.selectList(namespace + ".list", vo);
 	}
 
@@ -50,17 +50,17 @@ public class PostsDAOImpl implements PostsDAO{
 	}
 
 	@Override
-	public List<HashMap<String, Object>> comment(int pid, int page, int size) {
+	public HashMap<String, Object> comment(int pid, int page, int size) {
 		HashMap<String, Object> map = new HashMap<>();
 		map.put("pid", map);
 		map.put("start", (page-1)*size);
 		map.put("size", size);
-		return session.selectList(namespace + ".comment", map);
+		return session.selectOne(namespace + ".comment", map);
 	}
 
 	@Override
-	public int commTotal(int pcid) {
-		return session.selectOne(namespace + ".commTotal", pcid);
+	public int commTotal(int pid) {
+		return session.selectOne(namespace + ".commTotal", pid);
 	}
 
 	@Override
@@ -93,7 +93,7 @@ public class PostsDAOImpl implements PostsDAO{
 
 	@Override
 	public PCommentsVO commRead(int pcid) {
-		return session.selectOne(namespace + ".read", pcid);
+		return session.selectOne(namespace + ".commRead", pcid);
 	}
 
 	@Override
@@ -103,4 +103,29 @@ public class PostsDAOImpl implements PostsDAO{
 		map.put("writer", writer);
 		return session.selectOne(namespace + ".info", map);
 	}
+
+	@Override
+	public void insertFavorites(int pid, String uid) {
+		HashMap<String,Object> map=new HashMap<>();
+		map.put("pid", pid);
+		map.put("uid", uid);
+		session.insert(namespace + ".insert_favorites", map);
+	}
+
+	@Override
+	public void deleteFavorites(int pid, String uid) {
+		HashMap<String,Object> map=new HashMap<>();
+		map.put("pid", pid);
+		map.put("uid", uid);
+		session.delete(namespace + ".delete_favorites", map);	
+	}
+
+	@Override
+	public void updateFavorites(int pid, int amount) {
+		HashMap<String,Object> map=new HashMap<>();
+		map.put("pid", pid);
+		map.put("amount", amount);
+		session.update(namespace + ".update_favorites", map);
+	}
+
 }

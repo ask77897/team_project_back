@@ -32,7 +32,7 @@ public class PostsServiceImpl implements PostsService{
 	public void delComm(int pcid) {
 		PCommentsVO vo = dao.commRead(pcid);
 		dao.commDel(pcid);
-		dao.commcnt(vo.getPcid(), -1);
+		dao.commcnt(vo.getPid(), -1);
 	}
 
 	@Transactional
@@ -57,9 +57,17 @@ public class PostsServiceImpl implements PostsService{
 		
 	}
 
+	@Transactional
 	@Override
-	public void delete(int pid) {
-		// TODO Auto-generated method stub
-		
+	public void insertFavorites(int pid, String uid) {
+			dao.insertFavorites(pid, uid);
+			dao.updateFavorites(pid, 1);
+	}
+	
+	@Transactional
+	@Override
+	public void deleteFavorites(int pid, String uid) {
+			dao.deleteFavorites(pid, uid);
+			dao.updateFavorites(pid, -1);
 	}
 }

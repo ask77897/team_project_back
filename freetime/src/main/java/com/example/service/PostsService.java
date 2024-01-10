@@ -12,5 +12,6 @@ public interface PostsService {
 	public HashMap<String, Object> list(QueryVO vo);
 	public HashMap<String, Object> read(int pid, String writer);
 	public void photoIn(PostsVO vo);
-	public void delete(int pid);
+	public void insertFavorites(int pid, String uid);
+	public void deleteFavorites(int pid, String uid);
 }
