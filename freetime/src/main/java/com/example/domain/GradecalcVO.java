@@ -3,9 +3,9 @@ package com.example.domain;
 public class GradecalcVO {
 	private String uid;
 	private String course;
-	private int grade; //이수학점
-	private int score; //점수
-	private int base; //4.0 or 4.5
+	private int grade; // A~F 등급
+	private int score; //성적
+	private int base; //전공
 	public String getUid() {
 		return uid;
 	}

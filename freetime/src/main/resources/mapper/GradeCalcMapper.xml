@@ -5,7 +5,8 @@
       	select * from gradecalc
     </select>
     <select id="read" resultType="hashmap">
-    	select * from gradecalc where uid=#{uid}
+    	select * from gradecalc 
+    	where uid=#{uid}
     </select>
 	<insert id="insert">
 	  	insert into gradecalc (uid, courses, grade, score, base)
@@ -16,6 +17,7 @@
 	  	where uid=#{uid}
 	</update>
 	<delete id="delete">
-	  	delete from gradecalc where uid=#{uid}
+	  	delete from gradecalc 
+	  	where uid=#{uid}
 	</delete>
 </mapper>

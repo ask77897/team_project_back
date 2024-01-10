@@ -8,6 +8,10 @@ public class PostsVO {
 	private String title;
 	private String contents;
 	private Date regdate;
+	private int vcnt;
+	private int rcnt; 
+	private int fcnt;
+	
 	public int getPid() {
 		return pid;
 	}
@@ -38,10 +42,19 @@ public class PostsVO {
 	public void setContents(String contents) {
 		this.contents = contents;
 	}
+	public int vcnt() {
+		return vcnt;
+	}
+	public int rcnt() {
+		return rcnt;
+	}
+	public int fcnt() {
+		return fcnt;
+	}
+	
 	@Override
 	public String toString() {
 		return "PostsVO [pid=" + pid + ", writer=" + writer + ", title=" + title + ", contents=" + contents
-				+ ", regdate=" + regdate + "]";
+				+ ", regdate=" + regdate + ", vcnt=" + vcnt + ", rcnt=" + rcnt + ", fcnt=" + fcnt + "]";
 	}
-	
 }
