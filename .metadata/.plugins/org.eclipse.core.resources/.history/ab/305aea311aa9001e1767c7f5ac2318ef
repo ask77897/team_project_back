@@ -1,0 +1,33 @@
+package com.example.dao;
+
+import java.util.HashMap;
+
+import org.apache.ibatis.session.SqlSession;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
+
+import com.example.domain.MentorVO;
+
+@Repository
+public class MentorDAOImpl implements MentorDAO{
+	@Autowired
+	SqlSession session;
+	String namespace="com.example.mapper.MentorMapper";
+	@Override
+	public HashMap<String, Object> read() {
+		// TODO Auto-generated method stub
+		return session.selectOne(namespace + ".read");
+	}
+	@Override
+	public void insert(MentorVO vo) {
+		// TODO Auto-generated method stub
+		session.insert(namespace + ".insert");
+	}
+	@Override
+	public void update(MentorVO vo) {
+		// TODO Auto-generated method stub
+		session.update(namespace + ".update");
+	}
+	
+	
+}
