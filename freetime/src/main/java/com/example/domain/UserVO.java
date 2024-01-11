@@ -6,12 +6,13 @@ public class UserVO {
 	private String uid;
 	private String upass;
 	private String uname;
-	private Date regdate;
 	private String image;
 	private String phone;
 	private String school;
 	private String address1;
 	private String address2;
+  private Date regdate;
+  
 	public String getUid() {
 		return uid;
 	}
@@ -29,12 +30,6 @@ public class UserVO {
 	}
 	public void setUname(String uname) {
 		this.uname = uname;
-	}
-	public Date getRegdate() {
-		return regdate;
-	}
-	public void setRegdate(Date regdate) {
-		this.regdate = regdate;
 	}
 	public String getImage() {
 		return image;
@@ -66,11 +61,16 @@ public class UserVO {
 	public void setAddress2(String address2) {
 		this.address2 = address2;
 	}
+	public Date getRegdate() {
+		return regdate;
+	}
+	public void setRegdate(Date regdate) {
+		this.regdate = regdate;
+	}
 	@Override
 	public String toString() {
-		return "UserVO [uid=" + uid + ", upass=" + upass + ", uname=" + uname + ", regdate=" + regdate + ", image="
-				+ image + ", phone=" + phone + ", school=" + school + ", address1=" + address1 + ", address2="
-				+ address2 + "]";
+		return "UserVO [uid=" + uid + ", upass=" + upass + ", uname=" + uname + ", image=" + image + ", phone=" + phone
+				+ ", school=" + school + ", address1=" + address1 + ", address2=" + address2 + ", regdate=" + regdate
+				+ "]";
 	}
-	
 }

@@ -14,6 +14,11 @@ public class UserDAOImpl implements UserDAO{
 	SqlSession session;
 	String namespace="com.example.mapper.UserMapper";
 	
+  @Override
+	public List<HashMap<String, Object>> list() {
+		return session.selectList(namespace + ".list");
+	}
+  
 	@Override
 	public HashMap<String, Object> read(String uid) {
 		return session.selectOne(namespace + ".read", uid);
@@ -33,16 +38,16 @@ public class UserDAOImpl implements UserDAO{
 	public void image(UserVO vo) {
 		session.update(namespace + ".image", vo);
 	}
-
-	@Override
-	public void password(UserVO vo) {
-		session.update(namespace + ".password", vo);
-	}
-
+  
 	@Override
 	public void insert(UserVO vo) {
 		session.insert(namespace + ".insert", vo);
 	}
 
-	
+	@Override
+	public void passUpdate(String upass) {
+		// TODO Auto-generated method stub
+		session.update(namespace + ".passUpdate", upass);
+	}
+
 }

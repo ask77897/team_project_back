@@ -8,17 +8,13 @@ import com.example.domain.UserVO;
 
 @Repository
 public interface UserDAO {
-    public HashMap<String, Object> read(String uid);
-
-    public UserVO login(String uid);
-
-    public void update(UserVO vo);
-
-    public void image(UserVO vo);
-
-    public void password(UserVO vo);
-
-    public void insert(UserVO vo);
+  public HashMap<String, Object> read(String uid);
+  public UserVO login(String uid);
+  public List<HashMap<String, Object>> list();
+	public void update(UserVO vo);
+	public void passUpdate(String upass);
+  public void image(UserVO vo);
+  public void insert(UserVO vo);
     
     
 }
