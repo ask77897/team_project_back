@@ -1,5 +1,7 @@
 package com.example;
 
+import java.util.UUID;
+
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -8,7 +10,8 @@ import com.example.dao.MarketDAO;
 import com.example.dao.MentorDAO;
 import com.example.dao.MysqlDAO;
 import com.example.dao.UserDAO;
-import com.example.domain.QueryVO;
+import com.example.domain.MentorVO;
+import com.example.service.MarketService;
 
 @SpringBootTest
 class FreetimeApplicationTests {
@@ -23,6 +26,9 @@ class FreetimeApplicationTests {
 	
 	@Autowired
 	MarketDAO dao;
+	
+	@Autowired
+	MarketService sevice;
 
 	@Test
 	void contextLoads() {
@@ -33,17 +39,17 @@ class FreetimeApplicationTests {
 	void list() {
 		udao.list();
 	}
-	
-	@Test
+	*/
+	@Test //mentor insert
 	void insert() {
 		MentorVO vo = new MentorVO();
-		vo.setMid("test2");
-		vo.setUid("test1");
-		vo.setMtid(UUID.randomUUID().toString().substring(0, 10));
+		vo.setMid("test8");
+		vo.setUid("test9");
+		vo.setMtid("");
 		mendao.insert(vo);
-	}*/
+	}
 	/*
-	@Test
+	@Test //mentor list
 	void list() {
 		QueryVO vo = new QueryVO();
 		vo.setPage(1);
@@ -51,19 +57,19 @@ class FreetimeApplicationTests {
 		mendao.list(vo);
 	}
 	
-	@Test
+	@Test //market insert
 	public void insert() {
 		MarketVO vo = new MarketVO();
-		vo.setUid("test1");
+		vo.setUid("test9");
 		vo.setTitle("testTitle");
-		vo.setPhoto(null);
+		vo.setPhoto("");
 		vo.setContents("testContents");
 		vo.setPrice(0);
-		vo.setPhotonum(UUID.randomUUID().toString().substring(0, 10));
-		dao.insert(vo);
-	}*/
+		vo.setPhotonum("");
+		sevice.photoIn(vo);
+	}
 	
-	@Test
+	@Test //market list
 	public void list() {
 		QueryVO vo=new QueryVO();
 		vo.setPage(1);
@@ -72,4 +78,27 @@ class FreetimeApplicationTests {
 		dao.list(vo);
 	}
 
+	@Test //market delete
+	public void delete() {
+		dao.delete(3);
+	}
+	
+	@Test //mentor delete
+	public void delete() {
+		mendao.delete("5c2926e9-2");
+	}
+	
+	@Test //mentor update
+	public void update() {
+		MentorVO vo = new MentorVO();
+		vo.setMtid("b389e765-8");
+		vo.setMid("test3");
+		vo.setUid("test1");
+		mendao.update(vo);
+	}
+	
+	@Test //mentor read
+	public void read() {
+		mendao.read("d3977cf9-f");
+	}*/
 }

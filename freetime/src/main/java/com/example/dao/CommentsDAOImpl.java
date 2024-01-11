@@ -15,28 +15,38 @@ public class CommentsDAOImpl implements CommentsDAO{
 	SqlSession session;
 	String namespace="com.example.mapper.CommentMapper";
 	@Override
-	public List<HashMap<String, Object>> list() {
-		// TODO Auto-generated method stub
-		return session.selectList(namespace + ".list");
+	public List<HashMap<String, Object>> list(int mpid, int page, int size) {
+		HashMap<String, Object> map = new HashMap<>();
+		map.put("mpid", mpid);
+		map.put("start", (page-1) * size);
+		map.put("size", size);
+		return session.selectList(namespace + ".list", map);
 	}
 	@Override
-	public HashMap<String, Object> read(int cid) {
-		// TODO Auto-generated method stub
+	public CommentsVO read(int cid) {
 		return session.selectOne(namespace + ".read", cid);
 	}
 	@Override
 	public void insert(CommentsVO vo) {
-		// TODO Auto-generated method stub
 		session.insert(namespace + ".insert", vo);
 	}
 	@Override
 	public void update(CommentsVO vo) {
-		// TODO Auto-generated method stub
 		session.update(namespace + ".update", vo);
 	}
 	@Override
 	public void delete(int cid) {
-		// TODO Auto-generated method stub
 		session.delete(namespace + ".delete", cid);
+	}
+	@Override
+	public int total(int mpid) {
+		return session.selectOne(namespace + ".total", mpid);
+	}
+	@Override
+	public void ccnt(int mpid, int amount) {
+		HashMap<String, Object> map = new HashMap<>();
+		map.put("mpid", mpid);
+		map.put("amount", amount);
+		session.update(namespace + ".ccnt", map);
 	}
 }

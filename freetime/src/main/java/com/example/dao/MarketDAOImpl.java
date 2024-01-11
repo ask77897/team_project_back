@@ -97,14 +97,6 @@ public class MarketDAOImpl implements MarketDAO{
 	}
 
 	@Override
-	public HashMap<String, Object> read(int sid, String uid) {
-		HashMap<String, Object> map = new HashMap<>();
-		map.put("sid", sid);
-		map.put("uid", uid);
-		return session.selectOne(namespace + ".info", map);
-	}
-
-	@Override
 	public void photoUp(MarketVO vo) {
 		session.update(namespace + ".photoUp", vo);
 	}

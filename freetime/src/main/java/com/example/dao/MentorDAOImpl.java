@@ -18,30 +18,23 @@ public class MentorDAOImpl implements MentorDAO{
 	
 	@Override
 	public HashMap<String, Object> read(String mtid) {
-		// TODO Auto-generated method stub
 		return session.selectOne(namespace + ".read", mtid);
 	}
 	@Override
 	public void insert(MentorVO vo) {
-		// TODO Auto-generated method stub
 		session.insert(namespace + ".insert", vo);
 	}
 	@Override
 	public void update(MentorVO vo) {
-		// TODO Auto-generated method stub
 		session.update(namespace + ".update", vo);
 	}
 	@Override
 	public void delete(String mtid) {
-		// TODO Auto-generated method stub
 		session.delete(namespace + ".delete", mtid);
 	}
 	@Override
 	public List<HashMap<String, Object>> list(QueryVO vo) {
-		// TODO Auto-generated method stub
 		vo.setStart((vo.getPage()-1) * vo.getSize());
 		return session.selectList(namespace + ".list", vo);
 	}
-	
-	
 }

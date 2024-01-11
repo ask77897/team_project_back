@@ -6,13 +6,13 @@
 		order by regdate limit #{start}, #{size}
 	</select>
     <select id="read" resultType="hashmap">
-        select * from mentor where mtid=#{mtid}
+        select *, date_format(regdate, '%Y-%m-%d %T') from mentor where mtid=#{mtid}
     </select>
     <insert id="insert">
     	insert into mentor(mtid, uid, mid) values(#{mtid}, #{uid}, #{mid})
     </insert>
     <update id="update">
-    	update mentor set uid=#{uid}, mid=#{mid} where mtid=#{mtid}
+    	update mentor set uid=#{uid}, mid=#{mid}, regdate=now() where mtid=#{mtid}
     </update>
     <delete id="delete">
     	delete from mentor where mtid=#{mtid}

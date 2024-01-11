@@ -10,7 +10,6 @@ import com.example.domain.QueryVO;
 public interface MarketDAO {
 	public List<HashMap<String, Object>> list(QueryVO vo);
 	public HashMap<String, Object> read(int sid);
-	public HashMap<String, Object> read(int sid, String uid);
 	public int total(QueryVO vo);
 	public List<HashMap<String, Object>> comment(int sid, int page, int size);
 	public int commTotal(int mcid);

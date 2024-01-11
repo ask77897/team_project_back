@@ -10,6 +10,6 @@ public interface MarketService {
 	public void inComm(MCommentsVO vo);
 	public void delComm(int mcid);
 	public HashMap<String, Object> list(QueryVO vo);
-	public HashMap<String, Object> read(int sid, String uid);
+	public HashMap<String, Object> read(int sid);
 	public void photoIn(MarketVO vo);
 }
