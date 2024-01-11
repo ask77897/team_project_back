@@ -32,17 +32,17 @@ public class GradeCalcController {
 		return dao.read(gid);
 	}
 	
-	@PostMapping("/insert") // http://localhost:8080/gradecalc/insert (완료)
+	@PostMapping("/insert") // http://localhost:8080/gradecalc/insert
 	public void insert(@RequestBody GradecalcVO vo) {
 		dao.insert(vo);
 	}
 	
-	@PostMapping("/update") //http://localhost:8080/gradecalc/update (완료)
+	@PostMapping("/update") //http://localhost:8080/gradecalc/update
 	public void update(@RequestBody GradecalcVO vo) {
 		dao.update(vo);
 	}
 	
-	@GetMapping("/delete") //http://localhost:8080/gradecalc/delete?gid=1 (미완)
+	@GetMapping("/delete") //http://localhost:8080/gradecalc/delete?gid=1
 	public void delete(@RequestParam("gid") int gid) {
 		dao.delete(gid);
 	}

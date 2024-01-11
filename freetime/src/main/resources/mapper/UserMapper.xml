@@ -4,29 +4,29 @@
     <select id="list" resultType="hashmap">
         select * from users
     </select>
-	  <insert id="insert">
+	<insert id="insert">
         insert into users(uid, upass, uname, phone,school, address1, address2)
         values(#{uid},#{upass},#{uname},#{phone}, #{school}, #{address1},#{address2})
-	  </insert>
-	  <update id="passUpdate">
+	</insert>
+	<update id="passUpdate">
     	  update users set upass=#{upass} where uid=#{uid}
     </update>
-	  <update id="image">
+	<update id="image">
         update users
         set image=#{image}
         where uid=#{uid}
-	  </update>
+	</update>
     <update id="update">
         update users set
         uname=#{uname}, phone=#{phone}, school=#{school},
         address1=#{address1}, address2=#{address2}
         where uid=#{uid}
     </update>
-	  <select id="read" resultType="hashmap">
+	<select id="read" resultType="hashmap">
         select *, date_format(regdate, '%Y-%m-%d %T') fmtdate
         from users
         where uid=#{uid}
-	  </select>
+	</select>
     <select id="login" resultType="com.example.domain.UserVO">
         select * from users where uid=#{uid}
     </select>

@@ -1,6 +1,7 @@
 package com.example.dao;
 
 import java.util.HashMap;
+import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -45,9 +46,8 @@ public class UserDAOImpl implements UserDAO{
 	}
 
 	@Override
-	public void passUpdate(String upass) {
-		// TODO Auto-generated method stub
-		session.update(namespace + ".passUpdate", upass);
+	public void passUpdate(UserVO vo) {
+		session.update(namespace + ".passUpdate", vo);
 	}
 
 }

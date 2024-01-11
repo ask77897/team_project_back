@@ -8,13 +8,13 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.example.dao.UserDAO;
+import com.example.dao.TimetableDAO;
 
 @RestController
 @RequestMapping("/timetable")
 public class TimetableController {
 	@Autowired
-	UserDAO dao;
+	TimetableDAO dao;
 	
 	@GetMapping("/list.json")
 	public List<HashMap<String, Object>> list() {
