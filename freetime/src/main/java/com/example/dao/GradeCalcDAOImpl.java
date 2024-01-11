@@ -26,8 +26,8 @@ public class GradeCalcDAOImpl implements GradeCalcDAO{
 	}
 
 	@Override
-	public void delete(String uid) {
-		session.delete(namespace + ".delete", uid);
+	public void delete(int gid) {
+		session.delete(namespace + ".delete", gid);
 	}
 
 	@Override
@@ -36,8 +36,8 @@ public class GradeCalcDAOImpl implements GradeCalcDAO{
 	}
 
 	@Override
-	public HashMap<String, Object> read(String uid) {
+	public HashMap<String, Object> read(int gid) {
 		// TODO Auto-generated method stub
-		return session.selectOne(namespace + ".read", uid);
+		return session.selectOne(namespace + ".read", gid);
 	}
 }
