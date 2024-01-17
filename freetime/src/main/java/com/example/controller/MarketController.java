@@ -41,18 +41,11 @@ public class MarketController {
 	}
 	
 	@GetMapping("/read/{sid}")
-	public HashMap<String, Object> read(@PathVariable int sid){
+	public HashMap<String, Object> read(@PathVariable("sid") int sid){
 		return dao.read(sid);
 	}
 	
-	@GetMapping("/comment/list.json")
-	public HashMap<String, Object> comment(int sid, int page, int size){
-		HashMap<String, Object> map = new HashMap<>();
-		map.put("list", dao.comment(sid, page, size));
-		map.put("total", dao.commTotal(sid));
-		return map;
-	}
-	
+
 	@PostMapping("/photo")
 	public void photo(MarketVO vo, MultipartHttpServletRequest multi) {
 		MultipartFile file = multi.getFile("file");
@@ -76,6 +69,14 @@ public class MarketController {
 	public void update(@RequestBody MarketVO vo) {
 		dao.update(vo);
 	}
+		
+	@GetMapping("/comment/list.json")
+	public HashMap<String, Object> comment(@RequestParam("sid") int sid, @RequestParam("page") int page, @RequestParam("size") int size){
+		HashMap<String, Object> map = new HashMap<>();
+		map.put("total", dao.commTotal(sid));
+		map.put("list", dao.comment(sid, page, size));
+		return map;
+	}
 	
 	@PostMapping("/comment/insert")
 	public void incomm(@RequestBody MCommentsVO vo) {
@@ -91,4 +92,6 @@ public class MarketController {
 	public void upcomm(@RequestBody MCommentsVO vo) {
 		dao.commUp(vo);
 	}
+
 }
+
