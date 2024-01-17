@@ -13,36 +13,42 @@ import com.example.domain.UserVO;
 public class UserDAOImpl implements UserDAO{
 	@Autowired
 	SqlSession session;
-	String namespace = "com.example.mapper.UserMapper";
-
-	@Override
+	String namespace="com.example.mapper.UserMapper";
+	
+  @Override
 	public List<HashMap<String, Object>> list() {
-		// TODO Auto-generated method stub
 		return session.selectList(namespace + ".list");
 	}
-
+  
 	@Override
 	public HashMap<String, Object> read(String uid) {
-		// TODO Auto-generated method stub
+		System.out.println(">>>>>>>> : " + uid);
 		return session.selectOne(namespace + ".read", uid);
 	}
 
 	@Override
-	public void join(UserVO vo) {
-		// TODO Auto-generated method stub
-		session.insert(namespace + ".join", vo);
+	public UserVO login(String uid) {
+		return session.selectOne(namespace + ".login", uid);
 	}
 
 	@Override
 	public void update(UserVO vo) {
-		// TODO Auto-generated method stub
 		session.update(namespace + ".update", vo);
 	}
 
 	@Override
-	public void passUpdate(String upass) {
-		// TODO Auto-generated method stub
-		session.update(namespace + ".passUpdate", upass);
+	public void image(UserVO vo) {
+		session.update(namespace + ".image", vo);
+	}
+  
+	@Override
+	public void insert(UserVO vo) {
+		session.insert(namespace + ".insert", vo);
+	}
+
+	@Override
+	public void passUpdate(UserVO vo) {
+		session.update(namespace + ".passUpdate", vo);
 	}
 
 }

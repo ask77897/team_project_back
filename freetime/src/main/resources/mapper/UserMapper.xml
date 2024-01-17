@@ -4,18 +4,42 @@
     <select id="list" resultType="hashmap">
         select * from users
     </select>
-    <select id="read" resultType="hashmap">
-    	select * from users where uid=#{uid} 
-    </select>
-    <insert id="join">
-    	insert into users(uid, upass, uname, school) values(#{uid}, #{upass}, #{uname}, #{school})
-    </insert>
+	<insert id="insert">
+        insert into users(uid, upass, uname, school, phone, address1, address2, regdate)
+        values(#{uid},#{upass},#{uname},"서울대", #{phone}, #{address1},#{address2}, now())
+	</insert>
+	<update id="passUpdate">
+    	  update users set upass=#{upass} where uid=#{uid}
+    </update>
+	<update id="image">
+        update users
+        set image=#{image}
+        where uid=#{uid}
+	</update>
     <update id="update">
-    	update users set uname=#{umane}, school=#{school}, phone=#{phone},
-    	address1=#{address1}, address2=#{address2}, image=#{image}, birthday=#{birthday}
-    	where uid=#{uid}
+        update users set
+       	 uname=#{uname}
+        , phone=#{phone}
+        , address1=#{address1}
+        , address2=#{address2}
+        , fmtmodi=now()
+        where uid=#{uid}
     </update>
-    <update id="passUpdate">
-    	update users set upass=#{upass} where uid=#{uid}
-    </update>
+	<select id="read" resultType="hashmap">
+        select 
+        	uid
+        	,uname
+        	,phone
+        	,image
+        	,address1
+        	,address2
+        	,date_format(regdate, "%Y.%m.%d.") as fmtdate
+        	,date_format(fmtmodi, "%Y.%m.%d.") as fmtmodi
+        from users
+        where uid=#{uid}
+	</select>
+    <select id="login" resultType="com.example.domain.UserVO">
+        select * from users where uid=#{uid}
+    </select>
+    
 </mapper>

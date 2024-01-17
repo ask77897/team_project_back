@@ -50,12 +50,7 @@ public class PostsServiceImpl implements PostsService{
 		dao.viewcnt(pid);
 		return dao.read(pid, writer);
 	}
-
-	@Override
-	public void photoIn(PostsVO vo) {
-		// TODO Auto-generated method stub
-		
-	}
+	
 
 	@Transactional
 	@Override
@@ -69,5 +64,12 @@ public class PostsServiceImpl implements PostsService{
 	public void deleteFavorites(int pid, String uid) {
 			dao.deleteFavorites(pid, uid);
 			dao.updateFavorites(pid, -1);
+	}
+	
+	@Transactional
+	@Override
+	public void photoIn(PostsVO vo) {
+		// TODO Auto-generated method stub
+		
 	}
 }

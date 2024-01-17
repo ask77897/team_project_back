@@ -50,12 +50,12 @@ public class PostsDAOImpl implements PostsDAO{
 	}
 
 	@Override
-	public HashMap<String, Object> comment(int pid, int page, int size) {
+	public List<HashMap<String, Object>> comment(int pid, int page, int size) {
 		HashMap<String, Object> map = new HashMap<>();
 		map.put("pid", map);
 		map.put("start", (page-1)*size);
 		map.put("size", size);
-		return session.selectOne(namespace + ".comment", map);
+		return session.selectList(namespace + ".comment", map);
 	}
 
 	@Override
@@ -126,6 +126,17 @@ public class PostsDAOImpl implements PostsDAO{
 		map.put("pid", pid);
 		map.put("amount", amount);
 		session.update(namespace + ".update_favorites", map);
+	}
+
+	@Override
+	public void image(PostsVO vo) {
+			session.update(namespace + ".image", vo);
+	}
+
+	@Override
+	public void check(String postsId) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

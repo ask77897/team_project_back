@@ -45,6 +45,7 @@ public class MarketController {
 		return dao.read(sid);
 	}
 	
+
 	@PostMapping("/photo")
 	public void photo(MarketVO vo, MultipartHttpServletRequest multi) {
 		MultipartFile file = multi.getFile("file");

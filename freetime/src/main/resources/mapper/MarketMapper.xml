@@ -7,7 +7,7 @@
     </select>
     <select id="read" resultType="hashmap">
     	select *, (select count(*) from mcomments where sid=#{sid})
-    	from view_market where sid=#{sid} 
+    	from view_market where sid=#{sid}
     </select>
     <select id="total" resultType="int">
     	select count(*) from market where title like concat('%', #{query}, '%')
