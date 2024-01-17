@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
@@ -25,34 +26,34 @@ import com.example.service.MarketService;
 public class MarketController {
 	@Autowired
 	MarketDAO dao;
-	
+
 	@Autowired
 	MarketService service;
-	
-	@GetMapping("/list.json") 
+
+	@GetMapping("/list.json")
 	public HashMap<String, Object> list(QueryVO vo) {
 		System.out.println(vo.toString());
 		return service.list(vo);
 	}
-	
+
 	@GetMapping("/delete")
 	public void delete(@RequestParam("sid") int sid) {
 		dao.delete(sid);
 	}
-	
+
 	@GetMapping("/read/{sid}")
-	public HashMap<String, Object> read(@PathVariable int sid){
+	public HashMap<String, Object> read(@PathVariable("sid") int sid) {
 		return dao.read(sid);
 	}
-	
+
 	@GetMapping("/comment/list.json")
-	public HashMap<String, Object> comment(int sid, int page, int size){
+	public HashMap<String, Object> comment(@RequestParam("sid") int sid, @RequestParam("page") int page, @RequestParam("size") int size) {
 		HashMap<String, Object> map = new HashMap<>();
 		map.put("list", dao.comment(sid, page, size));
 		map.put("total", dao.commTotal(sid));
 		return map;
 	}
-	
+
 	@PostMapping("/photo")
 	public void photo(MarketVO vo, MultipartHttpServletRequest multi) {
 		MultipartFile file = multi.getFile("file");
@@ -62,33 +63,34 @@ public class MarketController {
 			file.transferTo(new File("c:" + path + fileName));
 			vo.setPhoto(path + fileName);
 			dao.photoUp(vo);
-		}catch (Exception e) {
+		} catch (Exception e) {
 			System.out.println("이미지 변경 오류 : " + e.toString());
 		}
 	}
-	
+
 	@PostMapping("/insert")
 	public void insert(@RequestBody MarketVO vo) {
 		service.photoIn(vo);
 	}
-	
+
 	@PostMapping("/update")
 	public void update(@RequestBody MarketVO vo) {
 		dao.update(vo);
 	}
-	
+
 	@PostMapping("/comment/insert")
 	public void incomm(@RequestBody MCommentsVO vo) {
 		service.inComm(vo);
 	}
-	
+
 	@PostMapping("/comment/delete/{mcid}")
 	public void delcomm(@PathVariable int mcid) {
 		service.delComm(mcid);
 	}
-	
+
 	@PostMapping("/comment/update")
 	public void upcomm(@RequestBody MCommentsVO vo) {
 		dao.commUp(vo);
 	}
+
 }

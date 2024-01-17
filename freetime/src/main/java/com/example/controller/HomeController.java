@@ -35,7 +35,7 @@ public class HomeController {
 	}
 
 	@GetMapping("/display")
-	public ResponseEntity<Resource> display(String file) {
+	public ResponseEntity<Resource> display(@RequestParam("file") String file) {
 		Resource resource = new FileSystemResource("c:" + file);
 		if (!resource.exists())
 			return new ResponseEntity<Resource>(HttpStatus.NOT_FOUND);
@@ -51,7 +51,7 @@ public class HomeController {
 	
 	  KakaoAPI kakaoApi = new KakaoAPI();
 
-	    @RequestMapping(value="/login")
+	    @RequestMapping("/login")
 	    public ModelAndView login(@RequestParam("code") String code, HttpSession session) {
 	        ModelAndView mav = new ModelAndView();
 	        // 1번 인증코드 요청 전달
@@ -70,7 +70,7 @@ public class HomeController {
 	        return mav;
 	    }
 
-	    @RequestMapping(value="/logout")
+	    @RequestMapping("/logout")
 	    public ModelAndView logout(HttpSession session) {
 	        ModelAndView mav = new ModelAndView();
 
