@@ -22,6 +22,7 @@ public class UserDAOImpl implements UserDAO{
   
 	@Override
 	public HashMap<String, Object> read(String uid) {
+		System.out.println(">>>>>>>> : " + uid);
 		return session.selectOne(namespace + ".read", uid);
 	}
 

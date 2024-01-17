@@ -11,7 +11,7 @@ public class UserVO {
 	private String school;
 	private String address1;
 	private String address2;
-  private Date regdate;
+	private Date regdate;
   
 	public String getUid() {
 		return uid;

@@ -5,8 +5,8 @@
         select * from users
     </select>
 	<insert id="insert">
-        insert into users(uid, upass, uname, phone,school, address1, address2)
-        values(#{uid},#{upass},#{uname},#{phone}, #{school}, #{address1},#{address2})
+        insert into users(uid, upass, uname, school, phone, address1, address2, regdate)
+        values(#{uid},#{upass},#{uname},"서울대", #{phone}, #{address1},#{address2}, now())
 	</insert>
 	<update id="passUpdate">
     	  update users set upass=#{upass} where uid=#{uid}
@@ -18,12 +18,23 @@
 	</update>
     <update id="update">
         update users set
-        uname=#{uname}, phone=#{phone}, school=#{school},
-        address1=#{address1}, address2=#{address2}
+       	 uname=#{uname}
+        , phone=#{phone}
+        , address1=#{address1}
+        , address2=#{address2}
+        , fmtmodi=now()
         where uid=#{uid}
     </update>
 	<select id="read" resultType="hashmap">
-        select *, date_format(regdate, '%Y-%m-%d %T') fmtdate
+        select 
+        	uid
+        	,uname
+        	,phone
+        	,image
+        	,address1
+        	,address2
+        	,date_format(regdate, "%Y.%m.%d.") as fmtdate
+        	,date_format(fmtmodi, "%Y.%m.%d.") as fmtmodi
         from users
         where uid=#{uid}
 	</select>
