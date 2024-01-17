@@ -42,7 +42,7 @@ public class GradeCalcController {
 		dao.update(vo);
 	}
 	
-	@GetMapping("/delete") //http://localhost:8080/gradecalc/delete?gid=1 (미완)
+	@GetMapping("/delete") //http://localhost:8080/gradecalc/delete?gid=1
 	public void delete(@RequestParam("gid") int gid) {
 		dao.delete(gid);
 	}

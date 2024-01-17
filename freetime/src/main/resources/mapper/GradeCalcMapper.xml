@@ -10,11 +10,11 @@
     	where gid=#{gid}
     </select>
 	<insert id="insert">
-	  	insert into gradecalc (uid, courses, grade, score, base)
-	  	values (#{uid}, #{courses}, #{grade}, #{score}, #{base})
+	  	insert into gradecalc (uid, gscore, gcredit, ggrade)
+	  	values (#{uid}, #{gscore}, #{gcredit}, #{ggrade})
 	</insert>
 	<update id="update">
-	  	update gradecalc set courses=#{courses}, grade=#{grade}, score=#{score}, base=#{base}
+	  	update gradecalc set uid=#{uid}, gscore=#{gscore}, gcredit=#{gcredit}, ggrade=#{ggrade}
 	  	where gid=#{gid}
 	</update>
 	

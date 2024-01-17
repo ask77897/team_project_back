@@ -9,14 +9,14 @@
 	</select>
 	<update id="update">
 		update timetable
-		set contents=#{contents}
+		set gid=#{gid}, gscore=#{gscore}, gcredit=#{gcredit}, ggrade=#{ggrade}
 		where uid=#{uid}
 	</update>
 	<delete id="delete">
 		delete from timetable where uid=#{uid}
 	</delete>
 	<insert id="insert">
-		insert into timetable(uid, contents)
-		value(#{uid}, #{contents});
+	  	insert into timetable (uid, gid, gscore, gcredit, ggrade)
+	  	values (#{uid}, #{gid}, #{gscore}, #{gcredit}, #{ggrade})
 	</insert>
 </mapper>

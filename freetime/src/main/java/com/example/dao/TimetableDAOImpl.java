@@ -26,8 +26,8 @@ public class TimetableDAOImpl implements TimetableDAO{
 	}
 
 	@Override
-	public void delete(int pid) {
-		session.delete(namespace + ".delete", pid);
+	public void delete(int tid) {
+		session.delete(namespace + ".delete", tid);
 	}
 
 	@Override
@@ -36,7 +36,7 @@ public class TimetableDAOImpl implements TimetableDAO{
 	}
 
 	@Override
-	public HashMap<String, Object> read(String uid) {
+	public HashMap<String, Object> read(int uid) {
 		// TODO Auto-generated method stub
 		return session.selectOne(namespace + ".read", uid);
 	}
