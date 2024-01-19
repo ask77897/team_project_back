@@ -1,0 +1,23 @@
+package com.example.domain;
+
+public class MentorVO {
+	private String uid;
+	private String mid;
+	public String getUid() {
+		return uid;
+	}
+	public void setUid(String uid) {
+		this.uid = uid;
+	}
+	public String getMid() {
+		return mid;
+	}
+	public void setMid(String mid) {
+		this.mid = mid;
+	}
+	@Override
+	public String toString() {
+		return "MentorVO [uid=" + uid + ", mid=" + mid + "]";
+	}
+	
+}
