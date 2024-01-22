@@ -35,7 +35,7 @@ public class HomeController {
 	}
 
 	@GetMapping("/display")
-	public ResponseEntity<Resource> display(String file) {
+	public ResponseEntity<Resource> display(@RequestParam("file") String file) {
 		Resource resource = new FileSystemResource("c:" + file);
 		if (!resource.exists())
 			return new ResponseEntity<Resource>(HttpStatus.NOT_FOUND);

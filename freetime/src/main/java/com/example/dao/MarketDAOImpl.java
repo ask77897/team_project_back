@@ -52,7 +52,7 @@ public class MarketDAOImpl implements MarketDAO{
 	@Override
 	public List<HashMap<String, Object>> comment(int sid, int page, int size) {
 		HashMap<String, Object> map = new HashMap<>();
-		map.put("sid", map);
+		map.put("sid", sid);
 		map.put("start", (page-1)*size);
 		map.put("size", size);
 		return session.selectList(namespace + ".comment", map);
